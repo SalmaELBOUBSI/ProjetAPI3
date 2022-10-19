@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delet d'un employée</title>
+</head>
+<body>
+<table border="1">
+    <th>ID</th>
+    <th>MATRICULE</th>
+    <th>NOM</th>
+    <th>PRENOM</th>
+    <th>TELEPHONE</th>
+    <th>E_MAIL</th>
+    <tr>
+        <td th:text="${supempl.idemploye}"/>
+        <td th:text="${supempl.matricule}"/>
+        <td th:text="${supempl.nom}"/>
+        <td th:text="${supempl.prenom}"/>
+        <td th:text="${supempl.telephone}"/>
+        <td th:text="${supempl.email}"/>
+    </tr>
+</table>
+<a href ="/">retour</a>
+</body>
+</html>
