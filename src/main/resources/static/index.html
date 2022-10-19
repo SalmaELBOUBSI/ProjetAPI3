@@ -5,8 +5,9 @@
     <title>Accueil</title>
 </head>
 <body>
-<h1> Accueil  </h1>
-<p><a href="clients/tous">voir tous les employés</a></p>
+<h1> Accueil gestion des employé </h1>
+<h2>Afficher tous les employés</h2>
+<p><a href="employes/tous">voir tous les employés</a></p>
 <p><form action = "employes/create" method="get">
     Matricule : <input type = "text" name="mat"> <br>
     Nom : <input type = "text" name="nom"> <br>
@@ -16,9 +17,24 @@
     <input type="submit" name="creer" value="CREER">
 </form>
 </p>
+<h2>Rechecher un employé</h2>
 <p><form action="employes/read" method="get">
     ID employé :<input type="text" name="idemploye"><br>
     <input type="submit" name="Valider" value="VALIDER">
 </form> </p>
+
+<h2>Delet un employé</h2>
+<p><form action="employes/delete" method="get">
+    idemploye : <input type="text" name="idemploye"><br>
+    <input type="submit" name="Valider" value="VALIDER">
+</form> </p>
+
+<h2>Update un employé</h2>
+<p><form action="employes/update" method="get">
+    idemploye : <input type="text" name="idemploye">
+    e-mail : <input type="text" name="email">
+    telephone : <input type="text" name="telephone">
+</form>
+</p>
 </body>
 </html>
