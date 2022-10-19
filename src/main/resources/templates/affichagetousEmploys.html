@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Liste des employés</title>
 </head>
 <body>
-$END$
+<table border="1">
+    <th>MATRICULE</th>
+    <th>NOM</th>
+    <th>PRENOM</th>
+    <th>TELEPHONE</th>
+    <th>E-MAIL</th>
+    <tr th:each="unEmploye : ${mesEmployes}">
+        <td th:text="${unEmploye.matricule}"/>
+        <td th:text="${unEmploye.nom}"/>
+        <td th:text="${unEmploye.prenom}"/>
+        <td th:text="${unEmploye.tel}"/>
+        <td th:text="${unEmploye.email}"/>
+    </tr>
+</table>
+<a href="/">retour</a>
 </body>
 </html>

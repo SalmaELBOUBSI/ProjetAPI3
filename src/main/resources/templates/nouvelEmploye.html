@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<table border="1">
+    <th>ID</th>
+    <th>MATRICULE</th>
+    <th>NOM</th>
+    <th>PRENOM</th>
+    <th>TELEPHONE</th>
+    <th>E-MAIL</th>
+    <tr>
+        <td th:text="${nouvemp.idemploye}"/>
+        <td th:text="${nouvemp.matricule}"/>
+        <td th:text="${nouvemp.nom}"/>
+        <td th:text="${nouvemp.prenom}"/>
+        <td th:text="${nouvemp.tel}"/>
+        <td th:text="${nouvemp.email}"/>
+    </tr>
+</table>
+<a href ="/">retour</a>
 </body>
 </html>
