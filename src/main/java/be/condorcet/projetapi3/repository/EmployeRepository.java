@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface EmployeRepository extends JpaRepository<Employe,Integer> {
     public List<Employe> findEmployesByNomLike(String nom);
-    public List<Employe> findByNomLikeAndPrenomLikeAndTelLike(String nom,String prenom,String telephone);
-
+    public List<Employe> findByNomLikeAndPrenomLikeAndTelephoneLike(String nom,String prenom,String telephone);
 
 }
