@@ -1,7 +1,7 @@
 package be.condorcet.projetapi3;
 
 import be.condorcet.projetapi3.entities.Employe;
-import be.condorcet.projetapi3.services.EmployeServiceImp;
+import be.condorcet.projetapi3.services.EmployeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class GestionEmploye {
 
     @Autowired
-    private EmployeServiceImp employeServiceImp;
+    private EmployeServiceImpl employeServiceImp;
     @RequestMapping("/tous")
     public String afftous(Map<String,Object> model){
         System.out.println("Recherche employés");
@@ -37,9 +37,9 @@ public class GestionEmploye {
         Employe emp = new Employe(matricule,nom,prenom);
         try {
             employeServiceImp.create(emp);//mise à jour de l'employe avec son id par l'environnement
-            emp = employeServiceImp.read(emp.getIdemploye());
+            emp = employeServiceImp.read(emp.getId_employe());
             emp.setTelephone("Aucun");
-            emp.setEmail("Aucun");
+            emp.setMail("Aucun");
             employeServiceImp.update(emp);
             model.put("nouvemp",emp);
         } catch (Exception e) {
@@ -51,10 +51,10 @@ public class GestionEmploye {
     }
 
     @RequestMapping("/read")
-    public String read(@RequestParam int idemploye, Map<String, Object> model){
-        System.out.println("recherche de l'employé n° "+idemploye);
+    public String read(@RequestParam int id_employe, Map<String, Object> model){
+        System.out.println("recherche de l'employé n° "+id_employe);
         try {
-            Employe emp = employeServiceImp.read(idemploye);
+            Employe emp = employeServiceImp.read(id_employe);
             model.put("monemp",emp);
         }catch (Exception e) {
             System.out.println("----------erreur lors de la recherche ----- --- " + e);
@@ -65,10 +65,10 @@ public class GestionEmploye {
     }
 
     @RequestMapping("/delete")
-    public String delete (@RequestParam int idemploye,Map<String,Object> model){
-        System.out.println("Supprimer l'employé n° : "+idemploye);
+    public String delete (@RequestParam int id_employe,Map<String,Object> model){
+        System.out.println("Supprimer l'employé n° : "+id_employe);
         try{
-            Employe emp = employeServiceImp.read(idemploye);
+            Employe emp = employeServiceImp.read(id_employe);
             employeServiceImp.delete(emp);
             model.put("supempl",emp);
         }catch(Exception e){
@@ -80,11 +80,11 @@ public class GestionEmploye {
     }
 
     @RequestMapping("/update")
-    public String update (@RequestParam int idemploye,@RequestParam String email,@RequestParam String telephone, Map<String,Object> model){
-        System.out.println("Update de l'employé n° : "+idemploye);
+    public String update (@RequestParam int id_employe,@RequestParam String mail,@RequestParam String telephone, Map<String,Object> model){
+        System.out.println("Update de l'employé n° : "+id_employe);
         try{
-            Employe emp = employeServiceImp.read(idemploye);
-            emp.setEmail(email);
+            Employe emp = employeServiceImp.read(id_employe);
+            emp.setMail(mail);
             emp.setTelephone(telephone);
             employeServiceImp.update(emp);
             model.put("upempl",emp);

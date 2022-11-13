@@ -1,5 +1,8 @@
 package be.condorcet.projetapi3.services;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 public interface InterfService <T>{

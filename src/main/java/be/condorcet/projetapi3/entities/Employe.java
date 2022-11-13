@@ -11,7 +11,7 @@ import java.util.List;
 public class Employe {
     @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employe_generator")
     @SequenceGenerator(name = "employe_generator", sequenceName = "EMPLOYE_SEQ", allocationSize = 1)
-    private int idemploye;
+    private Integer id_employe;
     @NonNull
     private String matricule;
     @NonNull
@@ -19,6 +19,9 @@ public class Employe {
     @NonNull
     private String prenom;
     private  String telephone;
-    private String email;
+    private String mail;
+    @OneToMany(mappedBy = "employe" , fetch = FetchType.LAZY,cascade=CascadeType.ALL, orphanRemoval=true)
+    @ToString.Exclude
+    private List<Projet> projets;
 
 }
