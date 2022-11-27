@@ -9,4 +9,5 @@ public interface EmployeRepository extends JpaRepository<Employe,Integer> {
     public List<Employe> findEmployesByNomLike(String nom);
     public List<Employe> findByNomLikeAndPrenomLikeAndTelephoneLike(String nom,String prenom,String telephone);
 
+    Employe findClientsByNomAndPrenomAndTelephone(String nom, String prenom,String telephone);
 }

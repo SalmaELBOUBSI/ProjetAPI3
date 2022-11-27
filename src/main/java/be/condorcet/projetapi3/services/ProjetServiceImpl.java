@@ -17,7 +17,7 @@ import java.util.Optional;
 public class ProjetServiceImpl implements InterfProjetService{
 
     @Autowired
-    private ProjetRepository projetRepository;
+    private static ProjetRepository projetRepository;
     @Autowired
     private EmployeServiceImpl employeService;
 
@@ -48,9 +48,15 @@ public class ProjetServiceImpl implements InterfProjetService{
     public List<Projet> all() throws Exception {
         return projetRepository.findAll();
     }
+
     @Override
     public Projet read(Integer id_projet) throws Exception {
         return projetRepository.findById(id_projet).get();
+    }
+
+    @Override
+    public Page<Projet> allp(Pageable pageable) throws Exception {
+        return projetRepository.findAll(pageable);
     }
 
 

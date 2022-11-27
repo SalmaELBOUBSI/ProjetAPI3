@@ -10,4 +10,5 @@ import java.util.List;
 public interface InterfProjetService extends InterfService<Projet> {
     public List<Projet> getProjets(Employe emp);
 
+
 }

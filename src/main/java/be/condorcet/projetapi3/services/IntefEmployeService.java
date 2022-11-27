@@ -8,4 +8,8 @@ import java.util.List;
 
 public interface IntefEmployeService extends  InterfService<Employe> {
     public List<Employe> read(String nom);
+
+    Employe read(String nom, String prenom,String telephone);
+
+    Page<Employe> allp(Pageable pageable) throws Exception;
 }

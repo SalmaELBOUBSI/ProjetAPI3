@@ -17,7 +17,10 @@ public class EmployeServiceImpl implements IntefEmployeService{
     public List<Employe> read(String nom) {
         return employeRepository.findEmployesByNomLike(nom+"%");
     }
-
+    @Override
+    public Employe read( String matricule,String nom, String prenom) {
+        return employeRepository.findClientsByNomAndPrenomAndTelephone(matricule,nom, prenom);
+    }
 
 
     @Override
@@ -42,6 +45,11 @@ public class EmployeServiceImpl implements IntefEmployeService{
     @Override
     public List<Employe> all() throws Exception {
         return employeRepository.findAll();
+    }
+
+    @Override
+    public Page<Employe> allp(Pageable pageable) throws Exception {
+        return employeRepository.findAll(pageable);
     }
 
 
