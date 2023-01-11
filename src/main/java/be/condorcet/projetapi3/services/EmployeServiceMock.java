@@ -1,6 +1,7 @@
 package be.condorcet.projetapi3.services;
 
 import be.condorcet.projetapi3.entities.Employe;
+import be.condorcet.projetapi3.entities.Projet;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -82,5 +83,10 @@ public class EmployeServiceMock implements IntefEmployeService{
     @Override
     public Page<Employe> allp(Pageable pageable) throws Exception {
         return null;
+    }
+
+    @Override
+    public List<Employe> getEmployes(Projet pjr) {
+        return (List<Employe>) pjr.getEmploye();
     }
 }

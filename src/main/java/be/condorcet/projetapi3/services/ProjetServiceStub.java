@@ -20,6 +20,9 @@ public class ProjetServiceStub implements InterfProjetService{
         return lpjr;
     }
 
+
+
+
     @Override
     public Projet create(Projet projet) throws Exception {
         projet.setId_projet(1);
@@ -54,4 +57,17 @@ public class ProjetServiceStub implements InterfProjetService{
     public Page<Projet> allp(Pageable pageable) throws Exception {
         return null;
     }
+    @Override
+    public Projet readtitre(String titre) {
+        Projet pjr = new Projet(titre);
+        pjr.getId_projet();
+        return pjr;
+    }
+
+    public Employe read(String nom, String prenom, String telephone) {
+        Employe emp = new Employe(nom,prenom,telephone);
+        emp.getId_employe();
+        return emp;
+    }
+
 }

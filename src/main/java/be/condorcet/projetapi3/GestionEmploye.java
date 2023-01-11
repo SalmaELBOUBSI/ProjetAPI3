@@ -1,13 +1,16 @@
 package be.condorcet.projetapi3;
 
 import be.condorcet.projetapi3.entities.Employe;
+import be.condorcet.projetapi3.entities.Projet;
 import be.condorcet.projetapi3.services.EmployeServiceImpl;
+import be.condorcet.projetapi3.services.ProjetServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -16,6 +19,8 @@ public class GestionEmploye {
 
     @Autowired
     private EmployeServiceImpl employeServiceImp;
+    @Autowired
+    private ProjetServiceImpl projetServiceImp;
     @RequestMapping("/tous")
     public String afftous(Map<String,Object> model){
         System.out.println("Recherche employés");
@@ -61,7 +66,7 @@ public class GestionEmploye {
             model.put("error",e.getMessage());
             return "error";
         }
-        return "affemploye";
+        return "employee";
     }
 
     @RequestMapping("/delete")
@@ -94,6 +99,22 @@ public class GestionEmploye {
             return "error";
         }
         return "updateEmploye";
+    }
+
+    @RequestMapping("/rechpartitre")
+    public String read(@RequestParam String titre, Map<String, Object> model) {
+        System.out.println("Titre " + titre);
+        try {
+            Projet pjr = projetServiceImp.readtitre(titre);
+            List<Employe> lemp= employeServiceImp.getEmployes(pjr);
+            model.put("projet",pjr);
+            model.put("emp", lemp);
+        } catch (Exception e) {
+            System.out.println("----------erreur lors de la recherche ----- --- " + e);
+            model.put("error", e.getMessage());
+            return "error";
+        }
+        return "affemploye";
     }
 
 

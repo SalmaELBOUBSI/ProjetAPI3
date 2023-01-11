@@ -20,6 +20,8 @@ public class ProjetServiceMock implements InterfProjetService{
         return (List<Projet>) emp.getProjets();
     }
 
+
+
     @Override
     public Projet create(Projet projet) throws Exception {
         num++;
@@ -72,4 +74,12 @@ public class ProjetServiceMock implements InterfProjetService{
     public Page<Projet> allp(Pageable pageable) throws Exception {
         return null;
     }
+
+    @Override
+    public Projet readtitre(String titre) {
+        List<Projet> ltitre =new ArrayList<>();
+        lpj.stream().filter(lpj->lpj.getTitre().equals(titre)).forEach(pjr->lpj.add(pjr));
+        return (Projet) ltitre;
+    }
+
 }

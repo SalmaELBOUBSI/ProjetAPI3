@@ -1,5 +1,6 @@
 package be.condorcet.projetapi3.services;
 import be.condorcet.projetapi3.entities.Employe;
+import be.condorcet.projetapi3.entities.Projet;
 import be.condorcet.projetapi3.repository.EmployeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -50,6 +51,12 @@ public class EmployeServiceImpl implements IntefEmployeService{
     @Override
     public Page<Employe> allp(Pageable pageable) throws Exception {
         return employeRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<Employe> getEmployes(Projet pjr) {
+        List<Employe> lemp = employeRepository.findEmployeeByTitre(pjr);
+        return lemp;
     }
 
 

@@ -13,4 +13,5 @@ public interface ProjetRepository extends JpaRepository<Projet,Integer> {
     public List<Projet> findProjetByEmploye(Employe emp);
     public List<Projet> findById(int id_projet);
 
+    Projet findEmployeBytitre(String pjr);
 }

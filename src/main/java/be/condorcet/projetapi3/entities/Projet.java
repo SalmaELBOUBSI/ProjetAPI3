@@ -32,4 +32,6 @@ public class Projet {
     @JoinColumn(name = "Id_employe")
     private Employe employe;
 
+    public Projet(String titre) {
+    }
 }

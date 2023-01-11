@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional(rollbackOn = Exception.class)
@@ -27,6 +26,9 @@ public class ProjetServiceImpl implements InterfProjetService{
         List<Projet> lpj = projetRepository.findProjetByEmploye(emp);
         return lpj;
     }
+
+
+
 
     @Override
     public Projet create(Projet projet) throws Exception {
@@ -59,5 +61,9 @@ public class ProjetServiceImpl implements InterfProjetService{
         return projetRepository.findAll(pageable);
     }
 
+    @Override
+    public Projet readtitre(String titre) {
+        return projetRepository.findEmployeBytitre(titre);
+    }
 
 }

@@ -1,7 +1,9 @@
 package be.condorcet.projetapi3.webservices;
 
 import be.condorcet.projetapi3.entities.Employe;
+import be.condorcet.projetapi3.entities.Projet;
 import be.condorcet.projetapi3.services.IntefEmployeService;
+import be.condorcet.projetapi3.services.InterfProjetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,12 +12,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
 
 @RestController
 @RequestMapping("/employes")
 public class RestEmploye {
     @Autowired
     private IntefEmployeService employeServiceImpl;
+
+    @Autowired
+    private InterfProjetService projetServiceImpl;
 
     //-------------------Retrouver l'employe correspondant à un id donné--------------------------------------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -85,5 +91,15 @@ public class RestEmploye {
         System.out.println("recherche de tous les employes");
         return new ResponseEntity<>(employeServiceImpl.allp(pageable), HttpStatus.OK);
     }
+
+    //-------------------Trouver un employe a partir d'un titre donnée--------------------------------------------------------
+    @RequestMapping(value = "/titre={titre}", method = RequestMethod.GET)
+    public ResponseEntity<List<Employe>> getTitre(@PathVariable(value = "titre") String titre)  throws Exception{
+        System.out.println("recherche des employés de titre : " + titre);
+        Projet pjr = projetServiceImpl.readtitre(titre);
+        List<Employe> lemp = employeServiceImpl.getEmployes(pjr);
+        return new ResponseEntity<>(lemp, HttpStatus.OK);
+    }
+
 
 }

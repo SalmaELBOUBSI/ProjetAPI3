@@ -64,4 +64,13 @@ public class EmployeServiceStub implements IntefEmployeService{
     public Page<Employe> allp(Pageable pageable) throws Exception {
         return null;
     }
+
+    @Override
+    public List<Employe> getEmployes(Projet pjr) {
+        List<Employe> lemp = new ArrayList<>();
+        lemp.add(new Employe("A23","Jules","Dup"));
+        lemp.add(new Employe("A56","Marie","Lenoi"));
+        return lemp;
+    }
+
 }

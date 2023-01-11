@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "*", allowedHeaders = "*",exposedHeaders = "*")
 
 @RestController
 @RequestMapping("/projets")
@@ -84,4 +85,6 @@ public class RestProjet {
         System.out.println("erreur : "+ex.getMessage());
         return ResponseEntity.notFound().header("error",ex.getMessage()).build();
     }
+
+
 }
